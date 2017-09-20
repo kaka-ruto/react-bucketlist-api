@@ -1,11 +1,16 @@
 {
   "name": "react-bucketlist-api",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13"
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.13",
+    "validator": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
