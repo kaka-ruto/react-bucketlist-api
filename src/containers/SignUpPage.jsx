@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import SignUpForm from '../components/SignUpForm.jsx';
+import axios from 'axios';
 
 class SignUpPage extends React.Component {
     ///// Class Constructor
@@ -29,17 +30,24 @@ class SignUpPage extends React.Component {
 
         this.setState({ 
             user
-        });
+        });        
     }
 
-    ///// Process the form
+    ///// Process the form - use axios to communicate with the python flask api
     processForm(event) {
         // Prevent default action, in this case, the form submission event
         event.preventDefault();
 
-        console.log('name:', this.state.user.username)
-        console.log('email:', this.state.user.email)
-        console.log('password:', this.state.user.password)
+        const apiUrl = "http://localhost:5000/";
+        const user = this.state.user;
+
+        axios.post(apiUrl + 'auth/register', user).then(function (response) {
+            console.log(response);
+        })
+        
+        .catch (function (error) {
+            console.log(error.response.data);
+        });
     }
 
     ///// Render the component

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import LoginForm from '../components/LoginForm.jsx';
+import axios from 'axios';
 
 class LoginPage extends React.Component {
     ///// Class Constructor
@@ -12,22 +13,12 @@ class LoginPage extends React.Component {
             errors: {},
             user: {
                 email: '',
-                username: '',
-                passoword: ''
+                password: ''
             }
         };
 
         this.processForm = this.processForm.bind(this);
         this.changeUser = this.changeUser.bind(this);
-    }
-
-    ///// Process the form
-    processForm(event) {
-        // Prevent default action, in this case, the form submission event
-        event.preventDefault();
-
-        console.log('name:', this.state.user.username)
-        console.log('password:', this.state.user.password)
     }
 
     ///// Change the User object
@@ -38,6 +29,23 @@ class LoginPage extends React.Component {
 
         this.setState({ 
             user
+        });
+    }
+    
+    ///// Process the form
+    processForm(event) {
+        // Prevent default action, in this case, the form submission event
+        event.preventDefault();
+
+        const apiUrl = "http://localhost:5000/";
+        const user = this.state.user;
+
+        axios.post(apiUrl + 'auth/login', user).then(function (response) {
+            console.log(response);
+        })
+
+        .catch (function (error) {
+            console.log(error.response.data);
         });
     }
 

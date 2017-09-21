@@ -77,3 +77,8 @@ a:hover {
   padding: 0 16px;
   color: green;
 }
+
+.sidebar {
+  margin-left: 20px;
+  width: 300px;
+}

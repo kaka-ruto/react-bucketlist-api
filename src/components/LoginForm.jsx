@@ -13,8 +13,9 @@ const LoginForm = ({onSubmit, onChange, errors, user,}) => (
 
             <div className = "field-line">
                 <TextField
-                floatingLabelText = "Username"
-                name = "username"
+                type = "email"
+                floatingLabelText = "Email"
+                name = "email"
                 errorText = { errors.name }
                 onChange = { onChange }
                 value = { user.username }

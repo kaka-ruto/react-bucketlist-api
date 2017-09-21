@@ -6,6 +6,7 @@ const Base = ({ children }) => (
         <div className = "top-bar">
             <div className = "top-bar-left">
                 <NavLink to = "/"> React Buck</NavLink>
+                <Link to="/dashboard">Dashboard</Link>
             </div>
 
             <div className = "top-bar-right">
