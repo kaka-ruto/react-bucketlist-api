@@ -1,21 +1,34 @@
 {
   "name": "react-bucketlist-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "A React JS front end to consume a python flask bucketlist api",
   "main": "index.js",
-  "private": true,
+  "repository": "https://github.com/borenho/react-bucketlist-api.git",
+  "author": "borenho <borecollins@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
   "dependencies": {
     "axios": "^0.16.2",
-    "body-parser": "^1.18.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.30.1",
+    "material-ui": "^0.19.2",
+    "node-sass": "^4.5.3",
+    "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.13",
-    "validator": "^8.2.0"
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
   }
 }

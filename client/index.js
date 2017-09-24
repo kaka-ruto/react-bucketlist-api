@@ -1,28 +1,8 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import HomePage from './components/HomePage';
-
-// const Appp = () => (
-//     <MuiThemeProvider>
-//         <HomePage />
-//     </MuiThemeProvider>
-// );
-
-// ReactDOM.render(
-//     <Appp />, 
-//     document.getElementById('root')
-// );
-// registerServiceWorker();
-
 import React from 'react';
 import ReactDom from 'react-dom'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import './index.css';
+import './styles/index.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import routes from './routes.js';
 import Base from './components/Base.jsx';
@@ -43,5 +23,4 @@ ReactDom.render((
       </div>
     </Router>
   </MuiThemeProvider>),
-  document.getElementById('root')
-);
+  document.getElementById('root'));

@@ -6,5 +6,4 @@ const HomePage = () => (
         < CardTitle title = "React Bucketlist" subtitle = "This is the HomePage" />
     </ Card>
 );
-
 export default HomePage;
