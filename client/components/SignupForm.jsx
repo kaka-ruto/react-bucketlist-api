@@ -15,6 +15,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
             <div className = "field-line">
                 <TextField
                 floatingLabelText = "Username"
+                autoFocus = 'true'
                 name = "username"
                 errorText = { errors.username }
                 onChange = { onChange }

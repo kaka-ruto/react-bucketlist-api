@@ -16,6 +16,7 @@ const LoginForm = ({onSubmit, onChange, errors, user,}) => (
                 <TextField
                 type = "email"
                 floatingLabelText = "Email"
+                autoFocus = 'true'
                 name = "email"
                 errorText = { errors.email }
                 onChange = { onChange }
