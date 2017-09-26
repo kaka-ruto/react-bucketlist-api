@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import LoginForm from '../components/LoginForm.jsx';
 import axios from 'axios';
+import { Redirect } from "react-router";
+import swal from 'sweetalert';
 
 class LoginPage extends React.Component {
     ///// Class Constructor
@@ -14,7 +16,9 @@ class LoginPage extends React.Component {
             user: {
                 email: '',
                 password: ''
-            }
+            },
+            isAuthenticated: false,
+            redirect: false
         };
 
         this.processForm = this.processForm.bind(this);
@@ -40,23 +44,33 @@ class LoginPage extends React.Component {
         const apiUrl = "http://localhost:5000/";
         const user = this.state.user;
 
-        axios.post(apiUrl + 'auth/login', user).then(function (response) {
-            console.log(response);
+        axios.post(apiUrl + 'auth/login', user).then((response) => {
+            swal("Success!", response.data.message, "success");
+            this.setState({
+                isAuthenticated: true,
+                redirect: true
+            });
+            
         })
 
         .catch (function (error) {
-            console.log(error.response.data);
+            swal("Error!", error.response.data.message, "error");
         });
     }
 
     ///// Render the component
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="dashboard"/>
+        }
+
         return (
             <LoginForm
                 onSubmit = { this.processForm }
                 onChange = { this.changeUser }
                 errors = { this.state.errors }
                 user = { this.state.user }
+                
             />
         );
     }

@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './styles/index.scss';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import routes from './routes.js';
 import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
@@ -13,7 +13,7 @@ import Bucketlists from './containers/Dashboard.jsx';
 
 ReactDom.render((
   <MuiThemeProvider muiTheme = { getMuiTheme() }>
-    <Router >
+    <Router>
       <div>
         <Base />
         <Route exact path='/' component={HomePage}/>

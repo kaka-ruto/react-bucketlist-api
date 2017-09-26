@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -15,7 +16,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
                 <TextField
                 floatingLabelText = "Username"
                 name = "username"
-                errorText = { errors.name }
+                errorText = { errors.username }
                 onChange = { onChange }
                 value = { user.username }
                 />
@@ -52,7 +53,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
     </Card>
 );
 
-SignUpForm.propTypes = {
+SignUpForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
