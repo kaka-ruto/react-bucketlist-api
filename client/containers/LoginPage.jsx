@@ -54,6 +54,7 @@ class LoginPage extends React.Component {
             window.sessionStorage.setItem("accessToken", response.data.access_token);
             window.sessionStorage.setItem("isAuthenticated", true);
             console.log('Acc', sessionStorage.accessToken);
+            console.log("Isauth", isAuthenticated)
         })
 
         .catch(function (error) {
@@ -79,7 +80,7 @@ class LoginPage extends React.Component {
 
     ///// Render the component
     render() {
-        if (this.state.redirect) {
+        if (this.state.isAuthenticated) {  
             return <Redirect to="dashboard"/>
         }
 
