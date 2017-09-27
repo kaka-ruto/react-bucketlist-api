@@ -1,9 +1,12 @@
 import React from 'react';
+import axios from 'axios';
+import { Redirect } from "react-router";
 import {List, ListItem} from 'material-ui/List';
 import { Card, CardHeader } from 'material-ui/Card';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
-import axios from 'axios';
 import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';   
+import BucketlistForm from '../components/BucketlistForm.jsx'; 
 
 class Dashboard extends React.Component {    // Dashboard holds bucketlists, items
     constructor(props) {
@@ -14,7 +17,7 @@ class Dashboard extends React.Component {    // Dashboard holds bucketlists, ite
             bucketlists: []
         };
         
-        // this.onAddBucketlist = onAddBucketlist.bind(this);
+        this.AddBucketlist = AddBucketlist.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +29,6 @@ class Dashboard extends React.Component {    // Dashboard holds bucketlists, ite
                 this.setState({
                     bucketlists: response.data
             });
-            console.log("Bucks", this.state.bucketlists);
         })
 
         .catch(function (error) {
@@ -47,15 +49,22 @@ class Dashboard extends React.Component {    // Dashboard holds bucketlists, ite
               console.log('Error msg', error.message);
             }
             console.log("Error config", error.config);
+
+            window.sessionStorage.setItem('isAuthenticated', false);
         });
     }
 
     render() {
+        if (sessionStorage.getItem('isAuthenticated') == 'false') {
+            return <Redirect to="login"/>
+        }    
+
         if (this.state.bucketlists.results == 0) {
             return (
             <Card className = "sidebar">
                 <CardHeader title = "Bucketlists" /> < Divider />
-                <h5><i>You have no bucketlists yet</i></h5>  < br />
+                <h5><i>You have no bucketlists yet</i></h5>
+                < RaisedButton onClick={this.addBucketlist} label = "Add Bucketlist" secondary={true} fullWidth />
             </Card>
             );
         }
