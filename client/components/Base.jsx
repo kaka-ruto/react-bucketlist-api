@@ -20,8 +20,8 @@ const Base = ({ children }) => (
     </div>
 );
 
-Base.propTypes = {
-    children: PropTypes.object.isRequired
-};
+// Base.propTypes = {
+//     children: PropTypes.object.isRequired
+// };
 
 export default Base;

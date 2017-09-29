@@ -2,11 +2,11 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-window.ActionsComponent = React.createClass({
+class ActionsComponent extends React.Component{
     render() {
         return (
             <div>
-                <a href="#"
+                <a href="/#/dashboard"
                     onClick = {() => this.props.changeAppMode('create')} >
                     <RaisedButton label = "Add Bucketlist" secondary={true} fullWidth />
                 </a>
@@ -14,6 +14,6 @@ window.ActionsComponent = React.createClass({
             
         );
     }
-});
+}
 
 export default ActionsComponent;

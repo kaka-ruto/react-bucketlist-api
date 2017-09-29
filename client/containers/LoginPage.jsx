@@ -54,7 +54,7 @@ class LoginPage extends React.Component {
             window.sessionStorage.setItem("accessToken", response.data.access_token);
             window.sessionStorage.setItem("isAuthenticated", true);
             console.log('Acc', sessionStorage.accessToken);
-            console.log("Isauth", isAuthenticated)
+            console.log("Isauth", sessionStorage.isAuthenticated)
         })
 
         .catch(function (error) {
@@ -75,12 +75,12 @@ class LoginPage extends React.Component {
               console.log('Error msg', error.message);
             }
             console.log("Error config", error.config);
-          });
+        });
     }
 
     ///// Render the component
     render() {
-        if (this.state.isAuthenticated) {  
+        if (sessionStorage.isAuthenticated == 'true') {  
             return <Redirect to="dashboard"/>
         }
 

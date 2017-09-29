@@ -3,14 +3,18 @@ import React from 'react';
 import { Card, CardHeader } from 'material-ui/Card';
 import ActionsComponent from './ActionsComponent.jsx';
 import TableBucketlists from './TableBucketlists.jsx';
+import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
-window.ReadAllBucketlists = React.createClass({
-    getInitialState() {
-        return {
+class GetAllBucketlists extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
             allBucketlists: []
         };
-    },
+    }
 
     // On mount, fetch all bucketlists and store them as this component's state
     componentDidMount() {
@@ -19,7 +23,7 @@ window.ReadAllBucketlists = React.createClass({
             method: "GET",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
                 this.setState({
-                    allBucketlists: response.data
+                    allBucketlists: response.data.results
             });
         })
 
@@ -44,32 +48,24 @@ window.ReadAllBucketlists = React.createClass({
 
             window.sessionStorage.setItem('isAuthenticated', false);
         });
-    },
+
+    }   
 
     // Render component on the page
     render() {
-            var allBucketlists = this.state.allBucketlists;
-
-            if (allBucketlists.results == 0) {
-                return (
-                <Card className = "sidebar">
-                    <CardHeader title = "Bucketlists" /> < Divider />
-                    <h5><i>You have no bucketlists yet</i></h5>
-                    < RaisedButton onClick={this.addBucketlist} label = "Add Bucketlist" secondary={true} fullWidth />
-                </Card>
-                );
-            }
-
-            return  (
-                <div>
-                <Card className = "sidebar">
-                     <ActionsComponent changeAppMode = {this.props.changeAppMode} /> 
-                    <CardHeader title = "Bucketlists" />
-                    <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/>
-                </Card>
-                </div>
-            );
+        var allBucketlists = this.state.allBucketlists;
+        console.log('All bucks getallrender', allBucketlists);
+        
+        return  (
+            <div>
+            <Card className = "sidebar">
+                <CardHeader title = "Bucketlists" />
+                <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/>
+                <ActionsComponent changeAppMode = {this.props.changeAppMode} /> 
+            </Card>
+            </div>
+        );
     }
-})
-
-export default ReadAllBucketlists;
+}
+    
+export default GetAllBucketlists;
