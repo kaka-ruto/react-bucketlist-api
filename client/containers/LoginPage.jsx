@@ -50,17 +50,37 @@ class LoginPage extends React.Component {
                 isAuthenticated: true,
                 redirect: true
             });
-            
+
+            sessionStorage.setItem("accessToken", response.data.access_token);
+            sessionStorage.setItem("isAuthenticated", true);
+            console.log('onLogin Acc', sessionStorage.accessToken);
+            console.log("Isauth", sessionStorage.isAuthenticated)
         })
 
-        .catch (function (error) {
-            swal("Error!", error.response.data.message, "error");
+        .catch(function (error) {
+            if (error.response) {
+              // The request was made and the server responded with a status code
+              // that falls out of the range of 2xx
+              swal("Error!", error.response.data.message, "error");
+              console.log("Response data", error.response.data);
+              console.log("Response status", error.response.status);
+              console.log("Response headers", error.response.headers);
+            } else if (error.request) {
+              // The request was made but no response was received
+              // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+              // http.ClientRequest in node.js
+              console.log("Request error", error.request);
+            } else {
+              // Something happened in setting up the request that triggered an Error
+              console.log('Error msg', error.message);
+            }
+            console.log("Error config", error.config);
         });
     }
 
     ///// Render the component
     render() {
-        if (this.state.redirect) {
+        if (sessionStorage.isAuthenticated == 'true') {  
             return <Redirect to="dashboard"/>
         }
 

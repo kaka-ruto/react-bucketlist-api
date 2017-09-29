@@ -7,7 +7,7 @@ import TextField from 'material-ui/TextField';
 
 const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
     <Card className = "container">
-        <form action = "/" onSubmit = { onSubmit }>
+        <form action = "/signup" onSubmit = { onSubmit }>
             <h2 className = "card-heading">Sign Up</h2>
 
             { errors.summary && <p className = "error-message">{errors.summary}</p> }
@@ -15,6 +15,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
             <div className = "field-line">
                 <TextField
                 floatingLabelText = "Username"
+                autoFocus = 'true'
                 name = "username"
                 errorText = { errors.username }
                 onChange = { onChange }
