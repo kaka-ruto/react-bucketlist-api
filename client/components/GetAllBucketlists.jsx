@@ -44,9 +44,8 @@ class GetAllBucketlists extends React.Component {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error msg', error.message);
             }
+            
             console.log("Error config", error.config);
-
-            window.sessionStorage.setItem('isAuthenticated', false);
         });
 
     }   

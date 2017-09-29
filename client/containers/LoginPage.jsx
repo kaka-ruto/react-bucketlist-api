@@ -51,9 +51,9 @@ class LoginPage extends React.Component {
                 redirect: true
             });
 
-            window.sessionStorage.setItem("accessToken", response.data.access_token);
-            window.sessionStorage.setItem("isAuthenticated", true);
-            console.log('Acc', sessionStorage.accessToken);
+            sessionStorage.setItem("accessToken", response.data.access_token);
+            sessionStorage.setItem("isAuthenticated", true);
+            console.log('onLogin Acc', sessionStorage.accessToken);
             console.log("Isauth", sessionStorage.isAuthenticated)
         })
 

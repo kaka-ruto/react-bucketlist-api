@@ -29,8 +29,6 @@ class CreateBucketlist extends React.Component {
         this.setState({ 
             bucketlist
         });
-        console.log('buckbug', bucketlist)
-        console.log("Create onche started")
     }
 
     // Handle onSave button
@@ -61,21 +59,22 @@ class CreateBucketlist extends React.Component {
               // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
               // http.ClientRequest in node.js
               console.log("Request error", error.request);
-            } else {
-              // Something happened in setting up the request that triggered an Error
-              console.log('Error msg', error.message);
+            } else if (error.message) {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error msg', error.message);
+            } else if (error.config) {
+                console.log("Error config", error.config);
             }
-            console.log("Error config", error.config);
+            console.log("Random error", error);
         });
     }
 
     render () {
-        console.log("in Craete buck", this.bucketlist)
         return (
             <div>
                 <a href="#"
                     onClick = {() => this.props.changeAppMode('read')} >
-                    <RaisedButton label = "View Bucketlist" secondary={true} fullWidth />
+                    <RaisedButton label = "View Bucketlist" secondary={true} />
                 </a>
 
                 <div>

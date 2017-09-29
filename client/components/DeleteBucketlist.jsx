@@ -40,13 +40,12 @@ class DeleteBucketlist extends React.Component {
                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                 // http.ClientRequest in node.js
                 console.log("Request error", error.request);
-            } else {
+            } else if (error.message == undefined) {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error msg', error.message);
+            } else if (error.config !== undefined) {
+                console.log("Error config", error.config);
             }
-            console.log("Error config", error.config);
-
-            window.sessionStorage.setItem('isAuthenticated', false);
         });
     }
 

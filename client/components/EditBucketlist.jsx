@@ -55,7 +55,6 @@ class EditBucketlist extends React.Component {
             }
             console.log("Error config", error.config);
 
-            window.sessionStorage.setItem('isAuthenticated', false);
         });
     }
 
@@ -113,7 +112,7 @@ class EditBucketlist extends React.Component {
                 <Card>
                 <a href="/#/dashboard"
                     onClick = {() => this.props.changeAppMode('readAll')} >
-                    <RaisedButton label = "View Bucketlist" secondary={true} fullWidth />
+                    <RaisedButton label = "View Bucketlist" secondary={true} />
                 </a>
                     <form action = "/" onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
                         <h2 className = "card-heading">Buck</h2>

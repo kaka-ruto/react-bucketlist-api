@@ -2,7 +2,7 @@
 import React from 'react';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
 import FontIcon from 'material-ui/FontIcon';
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import {purple200, red200, blue200} from 'material-ui/styles/colors';
 
 class BucketlistRow extends React.Component {
     render () {
@@ -14,15 +14,17 @@ class BucketlistRow extends React.Component {
                     <a href="/#/dashboard"
                         onClick = {() => this.props.changeAppMode('readOne', this.props.bucketlist.id)}
                         >
-                        Read One
+                        <FontIcon className="material-icons md-6" color={blue200}>visibility</FontIcon>
                     </a>
                     <a href='/#/dashboard'
                         onClick={() => this.props.changeAppMode('edit', this.props.bucketlist.id)}
-                        > Edit
+                        >
+                        <FontIcon className="material-icons md-18" color={purple200}>edit</FontIcon>
                     </a>
                     <a href='/#/dashboard'
                         onClick={() => this.props.changeAppMode('delete', this.props.bucketlist.id)}
-                        > Delete
+                        >
+                        <FontIcon className="material-icons md-6" color={red200}>delete_forever</FontIcon>
                     </a>
                 </TableRowColumn>
             </TableRow>

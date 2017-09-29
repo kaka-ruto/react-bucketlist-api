@@ -3,28 +3,13 @@ import React from 'react';
 import { Table, TableBody, TableRow, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 import BucketlistRow from './BucketlistRow.jsx'
 
-const BucketlistsTable = () => (
-    <Table>
-        <TableHeader>
-            <TableRow>
-                <TableHeaderColumn>ID</TableHeaderColumn>
-                <TableHeaderColumn>Title</TableHeaderColumn>
-                <TableHeaderColumn>Actions</TableHeaderColumn>
-            </TableRow>
-        </TableHeader>
-
-        <TableBody>
-            {/* {rows} */}
-        </TableBody>
-    </Table>
-);
-
 class TableBucketlists extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             stripedRows: true,
-            showCheckboxes: false
+            showCheckboxes: false,
+            selectable: true,
         };
     }
 
@@ -36,19 +21,20 @@ class TableBucketlists extends React.Component{
         }.bind(this));
 
         return (
-            !rows.length ? <div>You have no bucketists yet</div> : <Table>
-                                                                    <TableHeader>
-                                                                        <TableRow>
-                                                                            <TableHeaderColumn>ID</TableHeaderColumn>
-                                                                            <TableHeaderColumn>Title</TableHeaderColumn>
-                                                                            <TableHeaderColumn>Actions</TableHeaderColumn>
-                                                                        </TableRow>
-                                                                    </TableHeader>
+            !rows.length ? <div>You have no bucketists yet</div> 
+                        : <Table selectable={this.state.selectable}>
+                                <TableHeader adjustForCheckbox={this.state.showCheckboxes} displaySelectAll={this.state.showCheckboxes}>
+                                    <TableRow>
+                                        <TableHeaderColumn>ID</TableHeaderColumn>
+                                        <TableHeaderColumn>Title</TableHeaderColumn>
+                                        <TableHeaderColumn>Actions</TableHeaderColumn>
+                                    </TableRow>
+                                </TableHeader>
 
-                                                                    <TableBody>
-                                                                        {rows}
-                                                                    </TableBody>
-                                                                </Table>
+                                <TableBody displayRowCheckbox={this.state.showCheckboxes} stripedRows={this.state.stripedRows}>
+                                    {rows}
+                                </TableBody>
+                            </Table>
         );
     }
 }
