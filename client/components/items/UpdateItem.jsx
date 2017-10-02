@@ -6,7 +6,7 @@ import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 
-class EditBucketlist extends React.Component {
+class UpdateItem extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,18 +25,20 @@ class EditBucketlist extends React.Component {
     // On mount, get product data and put them in this components state
     componentDidMount() {
         var bucketlistID = this.props.bucketlistID;
+        var itemID = this.props.itemID;
 
         axios({
-            url : "http://localhost:5000/bucketlists/" + bucketlistID,
+            url : "http://localhost:5000/bucketlists/" + bucketlistID + '/items/' + itemID,
             method: "GET",
-            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
+            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
+
+        }).then((response) => {
                 this.setState({
                     id: response.data.id,
                     title: response.data.title
             }); 
-        })
 
-        .catch(function (error) {
+        }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -74,18 +76,21 @@ class EditBucketlist extends React.Component {
             title: this.state.title
         };
 
-        console.log('BUck data', data)
+        console.log('item edit data', data)
         const bucketlistID = this.props.bucketlistID;
+        const itemID = this.props.itemID;
 
         axios({
-            url : "http://localhost:5000/bucketlists/" + bucketlistID,
+            url : "http://localhost:5000/bucketlists/" + bucketlistID + '/items/' + itemID,
             method: "PUT",
             data: data,
-            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
-                swal("Success!", response.data.message, "success");
-        })
+            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
 
-        .catch(function (error) {
+        }).then((response) => {
+                swal("Success!", response.data.message, "success");
+                this.props.changeItemsMode('readAll');
+
+        }).catch(function (error) {
             if (error.response) {
               // The request was made and the server responded with a status code
               // that falls out of the range of 2xx
@@ -109,13 +114,13 @@ class EditBucketlist extends React.Component {
     render() {
         return (
             <div>
-                <Card className = "sidebar">
+                <Card className = "sidebar-items">
                 <a href="/#/dashboard"
-                    onClick = {() => this.props.changeAppMode('readAll')} >
-                    <RaisedButton label = "View Bucketlist" secondary={true} />
+                    onClick = {() => this.props.changeItemsMode('readAll')} >
+                    <RaisedButton label = "View Items" secondary={true} />
                 </a>
-                    <form action = "/" onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
-                        <h2 className = "card-heading">Buck</h2>
+                    <form onSubmit = { this.onSave }>
+                        <h2 className = "card-heading">Item</h2>
 
                         <div className = "field-line">
                             <TextField
@@ -138,4 +143,4 @@ class EditBucketlist extends React.Component {
     }
 }
 
-export default EditBucketlist;
+export default UpdateItem;

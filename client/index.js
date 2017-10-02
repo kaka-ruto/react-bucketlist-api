@@ -14,8 +14,7 @@ import Dashboard from './containers/Dashboard.jsx';
 ReactDom.render((
   <MuiThemeProvider muiTheme = { getMuiTheme() }>
     <Router>
-        <div>
-          <Base />
+         <div>
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/login' component={LoginPage}/>
           <Route exact path='/signup' component={SignUpPage}/>

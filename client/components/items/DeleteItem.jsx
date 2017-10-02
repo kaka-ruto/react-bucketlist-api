@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
-class DeleteBucketlist extends React.Component {
+class DeleteItem extends React.Component {
     constructor(props) {
         super(props);
         // Set initial component states
@@ -15,19 +15,23 @@ class DeleteBucketlist extends React.Component {
 
     // Handle single row deletion
     onDelete(event) {
-        var bucketlistID = this.props.bucketlistID;
+        event.preventDefault();
+
+        const bucketlistID = this.props.bucketlistID;
+        const itemID = this.props.itemID;
 
         axios({
-            url : "http://localhost:5000/bucketlists/" + bucketlistID,
-            data: JSON.stringify({'id': bucketlistID}),
+            url : "http://localhost:5000/bucketlists/" + bucketlistID + '/items/' + itemID,
+            data: JSON.stringify({'id': itemID}),
             method: "DELETE",
-            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
-                swal("Success!", response.data.message, "success");
-                // Switch app mode to see other bucketlists
-                this.props.changeAppMOde('readAll');
-        })
+            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
 
-        .catch(function (error) {
+        }).then((response) => {
+                swal("Success!", response.data.message, "success");
+                // Switch app mode to see other items
+                this.props.changeItemsMode('readAll');
+
+        }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -51,14 +55,18 @@ class DeleteBucketlist extends React.Component {
 
     render() {
         swal({
-            title: "Delete bucketlist",
-            text: "This bucketlist will be permanently deleted",
+            title: "Delete bucketlist item",
+            text: "This bucketlist item will be permanently deleted",
             icon: 'warning',
             buttons: true,
             dangerMode: true
-        })
-        .then((this.onDelete));
+        }).then ((confirmAction) => {
+            if (confirmAction) {
+                console.log("delete started")
+                return  this.onDelete
+            }
+        });
     }
 }
 
-export default DeleteBucketlist;
+export default DeleteItem;
