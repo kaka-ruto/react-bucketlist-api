@@ -14,9 +14,6 @@ const Base = ({ children }) => (
                 <Link to="/signup">Sign up</Link>
             </div>
         </div>
-
-        {children}
-
     </div>
 );
 

@@ -33,6 +33,7 @@ body {
   .top-bar {
     padding: 10px 15px;
     margin-bottom: 50px;
+    margin-top: 20px;
   }
   .top-bar::after {
     content: '';
@@ -51,7 +52,7 @@ body {
   
   .top-bar a,
   .nav a {
-    margin: 0 8px;
+    margin: 0px 8px;
   }
   
   .container {
@@ -81,4 +82,10 @@ body {
   .sidebar {
     margin-left: 20px;
     width: 500px;
+    float: left;
+  }
+
+  .sidebar-items {
+    margin-left: 550px;
+    width: 700px;
   }
