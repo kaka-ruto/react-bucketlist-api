@@ -48,12 +48,9 @@ class SignUpPage extends React.Component {
 
         axios.post(apiUrl + 'auth/register', user).then((response) => {
             swal("Success!", response.data.message, "success");
-            this.setState({
-                // isAuthenticated: true,   // Make isAuthenticated equal to true to redirect directly to the dashboard
-                redirect: true
+            this.setState ({
+                'registerSuccessful': true 
             });
-            
-            return <Redirect to="/dashboard"/>
             
         }).catch(function (error) {
             if (error.response) {
@@ -78,6 +75,10 @@ class SignUpPage extends React.Component {
 
     ///// Render the component
     render() {
+        if (this.state.registerSuccessful) {
+            return <Redirect to="/login"/>
+        }
+
         return (
             <div>
                 <div className = "top-bar">

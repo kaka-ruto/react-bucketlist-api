@@ -15,8 +15,6 @@ class DeleteItem extends React.Component {
 
     // Handle single row deletion
     onDelete(event) {
-        event.preventDefault();
-
         const bucketlistID = this.props.bucketlistID;
         const itemID = this.props.itemID;
 
@@ -60,12 +58,14 @@ class DeleteItem extends React.Component {
             icon: 'warning',
             buttons: true,
             dangerMode: true
+
         }).then ((confirmAction) => {
             if (confirmAction) {
-                console.log("delete started")
-                return  this.onDelete
+                this.onDelete()
             }
         });
+
+        return null;
     }
 }
 

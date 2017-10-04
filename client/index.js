@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import ReactDom from 'react-dom';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './styles/index.scss';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import routes from './routes.js';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';

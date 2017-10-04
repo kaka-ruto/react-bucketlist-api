@@ -1,33 +1,43 @@
-// Component to view all the created bucketlists
 import React from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
-import ActionsComponent from './ActionsComponent.jsx';
-import TableBucketlists from './TableBucketlists.jsx';
-import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
-import axios from 'axios';
+import ReactDOM from 'react-dom';
+import Search from 'react-search';
 
-class GetAllBucketlists extends React.Component {
+class SearchBucketlists extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            allBucketlists: []
-        };
+            buckets: []
+        }
     }
 
-    // On mount, fetch all bucketlists and store them as this component's state
-    componentDidMount() {
-        axios({
-            url : "http://localhost:5000/bucketlists/",
+    returnSearch(items) {
+        console.log(items);
+    }
+
+    getItemsAsync(searchValue, cb) {
+        console.log("search taryed", );
+        let url = "http://localhost:5000/bucketlists?q=${searchValue}"
+
+        fetch({
+            url : "http://localhost:5000/bucketlists?q=${searchValue}",
             method: "GET",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
         
         }).then((response) => {
-                this.setState({
-                    allBucketlists: response.data.results
-            });
-        
+            return response.json();
+
+        }).then( (results) => {
+            if(results.items !== undefined) {
+                let items = results.items.map( (res, i) => {
+                    return {
+                        id: i,
+                        value: res.title
+                    }
+                })
+
+                this.setState({ buckets: items });
+                cb(searchValue)
+            }
         }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
@@ -48,23 +58,24 @@ class GetAllBucketlists extends React.Component {
             
             console.log("Error config", error.config);
         });
+    }
 
-    }   
-
-    // Render component on the page
     render() {
-        var allBucketlists = this.state.allBucketlists;
-        
-        return  (
+        return (
             <div>
-                <Card className = "sidebar">
-                    <CardHeader title = "Bucketlists" />
-                    <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/>
-                    <ActionsComponent changeAppMode = {this.props.changeAppMode} /> 
-                </Card>
+                <div>
+                    <Search items = {this.state.items}
+                        multiple = {true}
+                        getItemsAsync = {this.getItemsAsync.bind(this)}
+                        onItemsChanged = {this.returnSearch.bind(this)}
+                    />
+                    <Card className="sidebar-items">
+                        <SearchBucketlists />
+                    </Card>
+                </div>
             </div>
-        );
+        )
     }
 }
-    
-export default GetAllBucketlists;
+
+export default SearchBucketlists;

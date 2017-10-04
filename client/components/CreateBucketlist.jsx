@@ -43,7 +43,9 @@ class CreateBucketlist extends React.Component {
             data: bucketlist,
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
                 swal("Success!", response.data.message, "success");
-                console.log("Bucket", response.data)
+                
+        }).then(response=>{
+            this.props.changeAppMode('readAll');
         })
 
         .catch(function (error) {
@@ -72,11 +74,6 @@ class CreateBucketlist extends React.Component {
     render () {
         return (
             <div>
-                <a href="#"
-                    onClick = {() => this.props.changeAppMode('read')} >
-                    <RaisedButton label = "View Bucketlist" secondary={true} />
-                </a>
-
                 <div>
                     <form onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
                         <h2 className = "card-heading">Create bucketlist</h2>

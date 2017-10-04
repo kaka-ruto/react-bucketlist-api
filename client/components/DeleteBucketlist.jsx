@@ -21,13 +21,14 @@ class DeleteBucketlist extends React.Component {
             url : "http://localhost:5000/bucketlists/" + bucketlistID,
             data: JSON.stringify({'id': bucketlistID}),
             method: "DELETE",
-            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
-                swal("Success!", response.data.message, "success");
-                // Switch app mode to see other bucketlists
-                this.props.changeAppMOde('readAll');
-        })
+            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
+        
+        }).then((response) => {
+            swal("Success!", response.data.message, "success");
+            // Switch app mode to see other items
+            this.props.changeAppMode('readAll');
 
-        .catch(function (error) {
+        }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -56,8 +57,14 @@ class DeleteBucketlist extends React.Component {
             icon: 'warning',
             buttons: true,
             dangerMode: true
-        })
-        .then((this.onDelete));
+
+        }).then((willDelete) => {
+            if (willDelete) {
+                this.onDelete()
+            }
+        });
+
+        return null;
     }
 }
 

@@ -83,6 +83,8 @@ class EditBucketlist extends React.Component {
             data: data,
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
                 swal("Success!", response.data.message, "success");
+        }).then(response=>{
+            this.props.changeAppMode('readAll');
         })
 
         .catch(function (error) {

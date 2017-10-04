@@ -27,5 +27,16 @@ module.exports = {
     plugins: [
         HtmlWebpackPluginConfig,
         new ExtractTextPlugin("index.css"),
-    ]
+    ],
+
+    resolve: {
+        root: __dirname,
+        alias: {
+            applicationStyles: 'client/styles/index.scss',
+            Dashboard: 'client/containers/Dashboard.jsx',
+            LoginPage: 'client/containers/LoginPage.jsx',
+            SignUpPage: 'client/containers/SignUpPage.jsx'
+        },
+        extensions: ['', '.js', '.jsx']
+    }
 }
