@@ -8,6 +8,8 @@ class SearchBucketlists extends React.Component {
         this.state = {
             buckets: []
         }
+        console.log("Search constr")
+        this.returnSearch = this.returnSearch.bind(this)
     }
 
     returnSearch(items) {
@@ -16,10 +18,8 @@ class SearchBucketlists extends React.Component {
 
     getItemsAsync(searchValue, cb) {
         console.log("search taryed", );
-        let url = "http://localhost:5000/bucketlists?q=${searchValue}"
-
         fetch({
-            url : "http://localhost:5000/bucketlists?q=${searchValue}",
+            url : "http://localhost:5000/bucketlists/?q={searchValue}",
             method: "GET",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
         
@@ -61,6 +61,7 @@ class SearchBucketlists extends React.Component {
     }
 
     render() {
+        
         return (
             <div>
                 <div>
@@ -69,12 +70,10 @@ class SearchBucketlists extends React.Component {
                         getItemsAsync = {this.getItemsAsync.bind(this)}
                         onItemsChanged = {this.returnSearch.bind(this)}
                     />
-                    <Card className="sidebar-items">
-                        <SearchBucketlists />
-                    </Card>
+                    
                 </div>
             </div>
-        )
+        );
     }
 }
 

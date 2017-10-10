@@ -138,6 +138,11 @@ class Dashboard extends React.Component {    // Dashboard holds bucketlists + it
                 <div>
                     {modeComponent}
                 </div>
+                <div>
+                    {/* <Card className="sidebar-items">
+                        <SearchBucketlists />
+                    </Card> */}
+                </div>
             </div>
         );
     }
