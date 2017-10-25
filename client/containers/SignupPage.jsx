@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+import Base from '../components/bucketlists/Base.jsx';
 
 class SignUpPage extends React.Component {
     ///// Class Constructor
@@ -81,23 +82,13 @@ class SignUpPage extends React.Component {
 
         return (
             <div>
-                <div className = "top-bar">
-                    <div className = "top-bar-left">
-                        <Link to = "/"> React Buck</Link>
-                    </div>
-        
-                    <div className = "top-bar-right">
-                        <Link to="/login">Login</Link>
-                        <Link to="/signup">Sign up</Link>
-                    </div>
-                </div>
+                <Base />
                 <div>
                     <SignUpForm
                         onSubmit = { this.processForm }
                         onChange = { this.changeUser }
                         errors = { this.state.errors }
                         user = { this.state.user }
-                        
                     />
                 </div>
             </div>

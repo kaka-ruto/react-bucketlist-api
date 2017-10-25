@@ -107,11 +107,7 @@ class GetOneBucketlist extends React.Component {
         return (
             <div>
                 <div>
-                    <Card className = "sidebar">
-                        <a href="/#/dashboard"
-                            onClick = {() => this.props.changeAppMode('readAll')} >
-                            <RaisedButton label = "View Bucketlist" secondary={true} fullWidth />
-                        </a>
+                    <Card className = "sidebar border-radius">
                         <form onSubmit={this.onSave}>
                             <Table>
                                 <TableHeader>
@@ -129,6 +125,10 @@ class GetOneBucketlist extends React.Component {
                                 </TableBody>
                             </Table>
                         </form>
+                        <a href="/#/dashboard"
+                            onClick = {() => this.props.changeAppMode('readAll')} >
+                            <RaisedButton label = "View Bucketlist" primary fullWidth />
+                        </a>
                     </Card>
                 </div>
                 <div>

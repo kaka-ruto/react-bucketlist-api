@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BucketlistRow from '../../../client/components/bucketlists/BucketlistRow.jsx';
+import GetOneBucketlist from '../../../client/components/bucketlists/GetOneBucketlist.jsx';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,8 +11,13 @@ import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 configure({ adapter: new Adapter() });
 
-const wrapper = shallow(<BucketlistRow bucketlist={{ id: 1}}/>);
-describe('Bucketlist row', () => {
+global.sessionStorage = {
+    setItem: () => {},
+    getItem: () => {}
+}
+
+const wrapper = shallow(<GetOneBucketlist bucketlist={{ id: 1}}/>);
+describe('Get Bucketlist', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
 
@@ -30,12 +35,12 @@ describe('Bucketlist row', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
                     <Router>
-                        <BucketlistRow bucketlist={{ id: 1}}/>
+                        <GetOneBucketlist bucketlist={{ id: 1}}/>
                     </Router>
                 </MuiThemeProvider>
             );
             expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('1visibilityeditdelete_forever');
+            expect(wrapper.text()).toContain('View Bucketlist');
         });
     });
 });

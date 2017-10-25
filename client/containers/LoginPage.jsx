@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Redirect } from "react-router";
 import swal from 'sweetalert';
 import { NavLink } from 'react-router-dom';
+import Base from '../components/bucketlists/Base.jsx';
 
 class LoginPage extends React.Component {
     ///// Class Constructor
@@ -80,16 +81,7 @@ class LoginPage extends React.Component {
 
         return (
             <div>
-                <div className = "top-bar">
-                    <div className = "top-bar-left">
-                        <NavLink to = "/"> React Buck</NavLink>
-                    </div>
-        
-                    <div className = "top-bar-right">
-                        <NavLink to="/login">Login</NavLink>
-                        <NavLink to="/signup">Sign up</NavLink>
-                    </div>
-                </div>
+                <Base />
                 
                 <div className="loginform">
                     <LoginForm

@@ -6,9 +6,9 @@ class ActionsComponent extends React.Component{
     render() {
         return (
             <div>
-                <a href="/#/dashboard"
+                <a href="/#/dashboard" className="border-radius"
                     onClick = {() => this.props.changeAppMode('create')} >
-                    <RaisedButton label = "Add Bucketlist" secondary={true} fullWidth />
+                    <RaisedButton label = "Add Bucketlist" primary fullWidth />
                 </a>
             </div>
 

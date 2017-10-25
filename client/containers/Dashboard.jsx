@@ -6,6 +6,7 @@ import { Card, CardHeader } from 'material-ui/Card';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import RaisedButton from 'material-ui/RaisedButton';   
 import { Link } from 'react-router-dom';
+import Base from '../components/bucketlists/Base.jsx';
 
 // Bucketlist components
 import GetAllBucketlists from '../components/bucketlists/GetAllBucketlists.jsx';
@@ -28,6 +29,7 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
         // Initial mode is 'read' mode
         this.state = {
             currentMode: 'readAll',
+            currentItem: 'readAllItems',    // All items for the selected bucket
             bucketlistID: null,
         };
 
@@ -120,23 +122,12 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
                 break;
         }
 
+        console.log('current mode', modeComponent);
         return (
             <div className="dashboard">
-                <div className = "top-bar">
-                    <div className = "top-bar-left">
-                        <Link to = "/"> React Buck</Link>
-                        <Link to = "/dashboard"> Dashboard</Link>
-                    </div>
-        
-                    <div className = "top-bar-right">
-                        <Link to="/logout" onClick={this.logout}>Logout</Link>
-                    </div>
-                </div>
+                <Base />
 
-                <div>
-                    
-                </div>
-                <div className="modecomponent">
+                <div className="modecomponent container">
                     {modeComponent}
                 </div>
             </div>

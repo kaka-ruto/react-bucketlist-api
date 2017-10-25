@@ -29,15 +29,13 @@ describe('Actions Component', () => {
                     div);
     });
 
-    describe('Text', () => {
-        it('should display the header', () => {
-            const wrapper = render(
-                <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <ActionsComponent/>
-                </MuiThemeProvider>
-            );
-            expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('Add Bucketlist');
-        });
+    it('should display the header', () => {
+        const wrapper = render(
+            <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                <ActionsComponent/>
+            </MuiThemeProvider>
+        );
+        expect(wrapper).toHaveLength(1);
+        expect(wrapper.text()).toContain('Add Bucketlist');
     });
 });

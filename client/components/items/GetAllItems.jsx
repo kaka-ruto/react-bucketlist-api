@@ -54,11 +54,10 @@ class GetAllItems extends React.Component {
     // Render component on the page
     render() {
         var items = this.state.items;
-        console.log('Get all items for # ' +this.props.bucketlistID, items);
         
         return  (
             <div>
-                <Card className = "sidebar-items">
+                <Card className = "sidebar-items border-radius">
                     <CardHeader title = "Items" />
                     <TableItems items={items} changeItemsMode={this.props.changeItemsMode}/>
                     <CreateItemButton changeItemsMode = {this.props.changeItemsMode} /> 

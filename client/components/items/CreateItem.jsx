@@ -75,7 +75,7 @@ class CreateItem extends React.Component {
     render () {
             return (
                 <div>
-                    <Card className="sidebar-items">
+                    <Card className="sidebar-items  border-radius">
                         <div>
                             <form onSubmit = { this.onSave }>
                                 <h2 className = "card-heading">Create item</h2>
