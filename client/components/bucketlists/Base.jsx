@@ -3,10 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Base = () => (
 
-    <div>
+    <div className="container">
         <div className = "top-bar">
             <div className = "top-bar-left">
-                <NavLink to = "/"> React Buck</NavLink>
+                <NavLink to = "/"> Home</NavLink>
                 <Link to="/dashboard">Dashboard</Link>
             </div>
 

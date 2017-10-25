@@ -56,7 +56,7 @@ class GetOneItem extends React.Component {
         return (
             <div>
                 <div>
-                    <Card className = "sidebar-items">
+                    <Card className = "sidebar-items border-radius">
                         <a href="/#/dashboard"
                             onClick = {() => this.props.changeItemsMode('readAll')} >
                             <RaisedButton label = "View Items" secondary={true} fullWidth />

@@ -57,9 +57,9 @@ class GetAllBucketlists extends React.Component {
         
         return  (
             <div>
-                <Card className = "sidebar">
+                <Card className = "sidebar border-radius">
                     <CardHeader title = "Bucketlists" />
-                    <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/>
+                    <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/> 
                     <ActionsComponent changeAppMode = {this.props.changeAppMode} /> 
                 </Card>
             </div>

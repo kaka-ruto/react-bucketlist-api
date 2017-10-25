@@ -114,7 +114,7 @@ class UpdateItem extends React.Component {
     render() {
         return (
             <div>
-                <Card className = "sidebar-items">
+                <Card className = "sidebar-items border-radius">
                 <a href="/#/dashboard"
                     onClick = {() => this.props.changeItemsMode('readAll')} >
                     <RaisedButton label = "View Items" secondary={true} />

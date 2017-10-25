@@ -111,7 +111,7 @@ class EditBucketlist extends React.Component {
     render() {
         return (
             <div>
-                <Card className = "sidebar">
+                <Card className = "sidebar border-radius">
                 <a href="/#/dashboard"
                     onClick = {() => this.props.changeAppMode('readAll')} >
                     <RaisedButton label = "View Bucketlist" secondary={true} />

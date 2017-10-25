@@ -8,7 +8,7 @@ class HomePage extends React.Component {
         return (
             <div>
                 <Base/>
-                
+
                 < Card className = "container" >
                     < CardTitle title = "React Bucketlist" subtitle = "This is the HomePage" />
                 </ Card>

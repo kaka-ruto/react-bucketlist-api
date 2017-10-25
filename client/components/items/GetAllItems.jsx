@@ -58,7 +58,7 @@ class GetAllItems extends React.Component {
         
         return  (
             <div>
-                <Card className = "sidebar-items">
+                <Card className = "sidebar-items border-radius">
                     <CardHeader title = "Items" />
                     <TableItems items={items} changeItemsMode={this.props.changeItemsMode}/>
                     <CreateItemButton changeItemsMode = {this.props.changeItemsMode} /> 

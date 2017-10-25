@@ -16,7 +16,7 @@ body {
   }
   
   a {
-    color: #00bcd4;
+    color: #1976d2;
     font-weight: bold;
     text-decoration: none;
     transition: color 0.4s;
@@ -31,9 +31,12 @@ body {
   }
   
   .top-bar {
-    padding: 10px 15px;
+    padding: 20px 50px 20px 50px;
     margin-bottom: 50px;
     margin-top: 20px;
+    background-color: #1FBCD2;
+    text-align: center;
+    border-radius: 10px;
   }
   .top-bar::after {
     content: '';
@@ -48,17 +51,23 @@ body {
   
   .top-bar-right {
     float: right;
+    font-size: 1.5em;
   }
   
   .top-bar a,
   .nav a {
     margin: 0px 8px;
+    color: white;
+  }
+
+  .top-bar a:hover {
+    color: #1976d2;
   }
   
   .container {
     margin: 0 auto;
     text-align: center;
-    width: 700px;
+    width: 80%;
   }
   
   .card-heading {
@@ -80,12 +89,19 @@ body {
   }
   
   .sidebar {
-    margin-left: 20px;
-    width: 700px;
+    width: 500px;
     float: left;
   }
 
   .sidebar-items {
-    margin-left: 750px;
-    width: 500px;
+    width: 600px;
+    float: right;
+  }
+
+  .primary-button {
+    color: #1FBCD2 !important;
+  }
+
+  .border-radius {
+    border-radius: 10px !important;
   }
