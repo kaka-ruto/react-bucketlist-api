@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .login {
+    margin: auto;
+    max-width: 500px;
+  }
+  
+  .loginButton {
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  a {
+    color: #1976d2;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.4s;
+  }
+  
+  a:hover {
+    color: #1976d2;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .top-bar {
+    padding: 20px 50px 20px 50px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    background-color: #1FBCD2;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .top-bar::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  
+  .top-bar-left {
+    float: left;
+    font-size: 1.5em;
+  }
+  
+  .top-bar-right {
+    float: right;
+    font-size: 1.5em;
+  }
+  
+  .top-bar a,
+  .nav a {
+    margin: 0px 8px;
+    color: white;
+  }
+
+  .top-bar a:hover {
+    color: #1976d2;
+  }
+  
+  .container {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+  }
+  
+  .card-heading {
+    padding: 16px;
+  }
+  
+  .field-line, .button-line {
+    padding: 16px;
+  }
+  
+  .error-message {
+    padding: 0 16px;
+    color: tomato;
+  }
+  
+  .success-message {
+    padding: 0 16px;
+    color: green;
+  }
+  
+  .sidebar {
+    width: 500px;
+    float: left;
+  }
+
+  .sidebar-items {
+    width: 600px;
+    float: right;
+  }
+
+  .primary-button {
+    color: #1FBCD2 !important;
+  }
+
+  .border-radius {
+    border-radius: 10px !important;
+  }
