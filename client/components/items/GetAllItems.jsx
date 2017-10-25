@@ -1,7 +1,7 @@
 // Component to view all the created bucketlists
 import React from 'react';
 import { Card, CardHeader } from 'material-ui/Card';
-import CreateItemButton from './ActionsComponent.jsx';
+import CreateItemButton from '../bucketlists/ActionsComponent.jsx';
 import TableItems from './TableItems.jsx';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';

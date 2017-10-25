@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import LoginForm from '../components/LoginForm.jsx';
+import LoginForm from '../components/bucketlists/LoginForm.jsx';
 import axios from 'axios';
 import { Redirect } from "react-router";
 import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class LoginPage extends React.Component {
     ///// Class Constructor
@@ -82,15 +82,16 @@ class LoginPage extends React.Component {
             <div>
                 <div className = "top-bar">
                     <div className = "top-bar-left">
-                        <Link to = "/"> React Buck</Link>
+                        <NavLink to = "/"> React Buck</NavLink>
                     </div>
         
                     <div className = "top-bar-right">
-                        <Link to="/login">Login</Link>
-                        <Link to="/signup">Sign up</Link>
+                        <NavLink to="/login">Login</NavLink>
+                        <NavLink to="/signup">Sign up</NavLink>
                     </div>
                 </div>
-                <div>
+                
+                <div className="loginform">
                     <LoginForm
                         onSubmit = { this.processForm }
                         onChange = { this.changeUser }

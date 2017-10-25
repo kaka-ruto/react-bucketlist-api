@@ -21,13 +21,14 @@ class GetAllBucketlists extends React.Component {
         axios({
             url : "http://localhost:5000/bucketlists/",
             method: "GET",
-            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
+            headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
+        
+        }).then((response) => {
                 this.setState({
                     allBucketlists: response.data.results
             });
-        })
-
-        .catch(function (error) {
+        
+        }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx

@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
-class DeleteItem extends React.Component {
+class DeleteBucketlist extends React.Component {
     constructor(props) {
         super(props);
         // Set initial component states
@@ -15,19 +15,18 @@ class DeleteItem extends React.Component {
 
     // Handle single row deletion
     onDelete(event) {
-        const bucketlistID = this.props.bucketlistID;
-        const itemID = this.props.itemID;
+        var bucketlistID = this.props.bucketlistID;
 
         axios({
-            url : "http://localhost:5000/bucketlists/" + bucketlistID + '/items/' + itemID,
-            data: JSON.stringify({'id': itemID}),
+            url : "http://localhost:5000/bucketlists/" + bucketlistID,
+            data: JSON.stringify({'id': bucketlistID}),
             method: "DELETE",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
-
+        
         }).then((response) => {
-                swal("Success!", response.data.message, "success");
-                // Switch app mode to see other items
-                this.props.changeItemsMode('readAll');
+            swal("Success!", response.data.message, "success");
+            // Switch app mode to see other items
+            this.props.changeAppMode('readAll');
 
         }).catch(function (error) {
             if (error.response) {
@@ -53,14 +52,14 @@ class DeleteItem extends React.Component {
 
     render() {
         swal({
-            title: "Delete bucketlist item",
-            text: "This bucketlist item will be permanently deleted",
+            title: "Delete bucketlist",
+            text: "This bucketlist will be permanently deleted",
             icon: 'warning',
             buttons: true,
             dangerMode: true
 
-        }).then ((confirmAction) => {
-            if (confirmAction) {
+        }).then((willDelete) => {
+            if (willDelete) {
                 this.onDelete()
             }
         });
@@ -69,4 +68,4 @@ class DeleteItem extends React.Component {
     }
 }
 
-export default DeleteItem;
+export default DeleteBucketlist;

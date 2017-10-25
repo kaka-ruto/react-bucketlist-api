@@ -1,6 +1,6 @@
 // Component contains the logic and HTML of our app’s “Add Bucketlist feature
 import React from 'react';
-import GetAllBucketlists from '../bucketlists/GetAllBucketlists.jsx'
+import GetAllBucketlists from '../GetAllBucketlists.jsx'
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';

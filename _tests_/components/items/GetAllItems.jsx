@@ -1,30 +1,32 @@
+// Component to view all the created bucketlists
 import React from 'react';
+import { Card, CardHeader } from 'material-ui/Card';
+import CreateItemButton from './ActionsComponent.jsx';
+import TableItems from './TableItems.jsx';
+import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
-class DeleteBucketlist extends React.Component {
+class GetAllItems extends React.Component {
     constructor(props) {
         super(props);
-        // Set initial component states
+
         this.state = {
-            title: ''
+            items: []
         };
-
-        this.onDelete = this.onDelete.bind(this);
     }
-
-    // Handle single row deletion
-    onDelete(event) {
+    
+    // On mount, fetch all bucketlists and store them as this component's state
+    componentDidMount() {
         var bucketlistID = this.props.bucketlistID;
-
         axios({
-            url : "http://localhost:5000/bucketlists/" + bucketlistID,
-            data: JSON.stringify({'id': bucketlistID}),
-            method: "DELETE",
+            url : "http://localhost:5000/bucketlists/" + bucketlistID + '/items',
+            method: "GET",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
-                swal("Success!", response.data.message, "success");
-                // Switch app mode to see other bucketlists
-                this.props.changeAppMOde('readAll');
+                this.setState({
+                    items: response.data.results
+                });
+                console.log("passed thru getallitems fetch", items);
         })
 
         .catch(function (error) {
@@ -40,25 +42,30 @@ class DeleteBucketlist extends React.Component {
                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                 // http.ClientRequest in node.js
                 console.log("Request error", error.request);
-            } else if (error.message == undefined) {
+            } else if(error.message) {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error msg', error.message);
-            } else if (error.config !== undefined) {
+            } else if(error.config) {
                 console.log("Error config", error.config);
-            }
+            }    
         });
-    }
+    }   
 
+    // Render component on the page
     render() {
-        swal({
-            title: "Delete bucketlist",
-            text: "This bucketlist will be permanently deleted",
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true
-        })
-        .then((this.onDelete));
+        var items = this.state.items;
+        console.log('Get all items for # ' +this.props.bucketlistID, items);
+        
+        return  (
+            <div>
+                <Card className = "sidebar-items">
+                    <CardHeader title = "Items" />
+                    <TableItems items={items} changeItemsMode={this.props.changeItemsMode}/>
+                    <CreateItemButton changeItemsMode = {this.props.changeItemsMode} /> 
+                </Card>
+            </div>
+        );
     }
 }
-
-export default DeleteBucketlist;
+    
+export default GetAllItems;

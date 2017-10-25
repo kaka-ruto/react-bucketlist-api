@@ -20,7 +20,7 @@ module.exports = {
             { test: /\.scss$/, 
                 use: ExtractTextPlugin.extract({ fallback: 'style-loader',
                 use: 'css-loader!sass-loader' })
-            },
+            }
         ]
     },
 
@@ -28,4 +28,15 @@ module.exports = {
         HtmlWebpackPluginConfig,
         new ExtractTextPlugin("index.css"),
     ]
+
+    // resolve: {
+    //     root: __dirname,
+    //     alias: {
+    //         applicationStyles: 'client/styles/index.scss',
+    //         Dashboard: 'client/containers/Dashboard.jsx',
+    //         LoginPage: 'client/containers/LoginPage.jsx',
+    //         SignUpPage: 'client/containers/SignUpPage.jsx'
+    //     },
+    //     extensions: ['', '.js', '.jsx']
+    // }
 }
