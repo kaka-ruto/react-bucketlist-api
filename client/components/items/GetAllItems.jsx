@@ -54,7 +54,6 @@ class GetAllItems extends React.Component {
     // Render component on the page
     render() {
         var items = this.state.items;
-        console.log('Get all items for # ' +this.props.bucketlistID, items);
         
         return  (
             <div>

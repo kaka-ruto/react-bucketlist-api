@@ -85,7 +85,7 @@ describe('LoginPage', () => {
     });
 
     it('has props', () => {
-        console.log(component.props())
+        // console.log(component.props())
     })
 
 });
@@ -94,7 +94,6 @@ describe('LoginForm', () => {
     it('renders 1 LoginForm component', () => {
         expect(component.find(LoginForm)).toHaveLength(1);
         expect(component.find(LoginForm).props());
-        console.log(LoginForm.find('#login-form'))
 
     });
 

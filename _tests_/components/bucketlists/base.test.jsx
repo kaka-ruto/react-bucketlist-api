@@ -35,7 +35,7 @@ describe('Navbar', () => {
                 </MuiThemeProvider>
             );
             expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('React Buck');
+            expect(wrapper.text()).toContain('Home');
         });
     });
 });

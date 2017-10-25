@@ -6,7 +6,6 @@ import {purple200, red200, blue200} from 'material-ui/styles/colors';
 
 class ItemRow extends React.Component {
     render () {
-        console.log("itemrow", this.props.item.id)
         return (
             <TableRow>
                 <TableRowColumn>{ this.props.item.id }</TableRowColumn>

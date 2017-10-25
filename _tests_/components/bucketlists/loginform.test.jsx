@@ -11,35 +11,29 @@ import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 configure({ adapter: new Adapter() });
 
+const wrapper = shallow(<LoginForm errors onSubmit user/>);
+
 describe('Login Form', () => {
-    // it('renders without crashing', () => {
-    //     const div = document.createElement('div');
+    it('renders without crashing', () => {
+        const div = document.createElement('div');
 
-    //             ReactDOM.render((
-    //                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
-    //                     <Router>
-    //                         <Route exact path='/login' component={LoginForm} errors/>
-    //                     </Router>
-    //                 </MuiThemeProvider>),
-    //                 div);
-    // });
+                ReactDOM.render((
+                    <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                        <Router>
+                            <Route exact path='/login'/>
+                        </Router>
+                    </MuiThemeProvider>),
+                    div);
+    });
 
 
-    // describe('Text', () => {
-    //     it('should display the header', () => {
-    //         const wrapper = render(
-    //             <MuiThemeProvider muiTheme = { getMuiTheme() }>
-    //                 <LoginForm errors onSubmit user/>
-    //             </MuiThemeProvider>
-    //         );
-    //         expect(wrapper).toHaveLength(1);
-    //         expect(wrapper.text()).toContain('Login');
-    //     });
-    // });
-    it('should have two input fields',()=>{
-		const wrapper = shallow(<LoginForm errors onSubmit user/>);
-        // expect(wrapper.find('input')).toHaveLength(2);
-        console.log(wrapper.instance())
+    describe('Text', () => {
+        it('should display the header', () => {
+            expect(wrapper).toHaveLength(1);
+            // expect(wrapper.text()).toContain('Login');
+            expect(wrapper.props).toBeDefined
+            expect(wrapper.children()).toHaveLength(1)
+        });
     });
 
 });
