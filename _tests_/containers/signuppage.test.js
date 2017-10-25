@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginPage from '../../client/containers/LoginPage.jsx';
+import SignUpPage from '../../client/containers/SignupPage.jsx';
 import swal from 'sweetalert';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -11,14 +11,14 @@ global.sessionStorage = {
     getItem: () => {}
 }
 
-describe('LoginPage', () => {
+describe('SignUpPage', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
 
         ReactDOM.render((
             <MuiThemeProvider muiTheme = { getMuiTheme() }>
                 <Router>
-                    <Route exact path='/' component={LoginPage}/>
+                    <Route exact path='/' component={SignUpPage}/>
                 </Router>
             </MuiThemeProvider>),
             div);

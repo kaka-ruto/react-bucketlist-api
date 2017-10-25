@@ -7,7 +7,7 @@ import TextField from 'material-ui/TextField';
 
 const LoginForm = ({onSubmit, onChange, errors, user,}) => (
     <Card className = "container">
-        <form onSubmit = { onSubmit }>
+        <form id="login-form" onSubmit = { onSubmit }>
             <h2 className = "card-heading">Login</h2>
 
             { errors.summary && <p className = "error-message">{errors.summary}</p> }

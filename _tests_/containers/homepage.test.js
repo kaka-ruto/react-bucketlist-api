@@ -1,43 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GetAllBucketlists from '../../../client/components/bucketlists/GetAllBucketlists.jsx';
+// import HomePage from '../../../client/components/bucketlists/HomePage.jsx';
+import HomePage from '../../client/components/bucketlists/HomePage.jsx'
 import { HashRouter as Router, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 configure({ adapter: new Adapter() });
 
-global.sessionStorage = {
-    setItem: () => {},
-    getItem: () => {}
-}
 
-describe('GetAllBucketlists', () => {
+describe('HomePage', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
 
-                ReactDOM.render((
-                    <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                        <Router>
-                            <Route exact path='/dashboard' component={GetAllBucketlists}/>
-                        </Router>
-                    </MuiThemeProvider>),
-                    div);
+        ReactDOM.render((
+            <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                <Router>
+                    <Route exact path='/' component={HomePage}/>
+                </Router>
+            </MuiThemeProvider>),
+            div);
     });
 
-    describe('Text', () => {
+    describe('Homepage item name', () => {
         it('should display the header', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <GetAllBucketlists/>
+                    <Router>
+                        <Route exact path='/' component={HomePage}/>
+                    </Router>
                 </MuiThemeProvider>
             );
             expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('Bucketlists');
+            expect(wrapper.text()).toContain('This is the HomePage');
         });
     });
 });

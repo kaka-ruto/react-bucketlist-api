@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GetAllBucketlists from '../../../client/components/bucketlists/GetAllBucketlists.jsx';
+import ActionsComponent from '../../../client/components/bucketlists/ActionsComponent.jsx';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -16,14 +16,14 @@ global.sessionStorage = {
     getItem: () => {}
 }
 
-describe('GetAllBucketlists', () => {
+describe('Actions Component', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
 
                 ReactDOM.render((
                     <MuiThemeProvider muiTheme = { getMuiTheme() }>
                         <Router>
-                            <Route exact path='/dashboard' component={GetAllBucketlists}/>
+                            <Route exact path='/dashboard' component={ActionsComponent}/>
                         </Router>
                     </MuiThemeProvider>),
                     div);
@@ -33,11 +33,11 @@ describe('GetAllBucketlists', () => {
         it('should display the header', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <GetAllBucketlists/>
+                    <ActionsComponent/>
                 </MuiThemeProvider>
             );
             expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('Bucketlists');
+            expect(wrapper.text()).toContain('Add Bucketlist');
         });
     });
 });

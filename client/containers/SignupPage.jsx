@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import SignUpForm from '../components/SignUpForm.jsx';
+import SignUpForm from '../components/bucketlists/SignUpForm.jsx';
 import { Redirect } from 'react-router';
 import axios from 'axios';
 import swal from 'sweetalert';

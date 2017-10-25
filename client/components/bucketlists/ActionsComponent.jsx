@@ -11,7 +11,7 @@ class ActionsComponent extends React.Component{
                     <RaisedButton label = "Add Bucketlist" secondary={true} fullWidth />
                 </a>
             </div>
-            
+
         );
     }
 }
