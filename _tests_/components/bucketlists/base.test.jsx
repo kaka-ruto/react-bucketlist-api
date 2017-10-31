@@ -37,5 +37,17 @@ describe('Navbar', () => {
             expect(wrapper).toHaveLength(1);
             expect(wrapper.text()).toContain('Home');
         });
+
+        it('shows login and signup if user is not logged in', () => {
+            const wrapper = render(
+                <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                    <Router>
+                        <Base/>
+                    </Router>
+                </MuiThemeProvider>
+            );
+
+            expect(wrapper.text()).toContain('LoginSign up');
+        })
     });
 });
