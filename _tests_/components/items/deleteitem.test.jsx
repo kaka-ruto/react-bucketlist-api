@@ -8,9 +8,6 @@ import swal from 'sweetalert';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 const wrapper = shallow(<DeleteItem bucketlistID={ 1 }/>);
 describe('Delete Bucketlist', () => {

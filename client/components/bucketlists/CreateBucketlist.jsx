@@ -15,7 +15,7 @@ class CreateBucketlist extends React.Component {
                 title: ''
             }
         };
-        
+
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
@@ -43,7 +43,7 @@ class CreateBucketlist extends React.Component {
             data: bucketlist,
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
                 swal("Success!", response.data.message, "success");
-                
+
         }).then(response=>{
             this.props.changeAppMode('readAll');
         })

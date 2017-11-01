@@ -6,15 +6,11 @@ import { MemoryRouter, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import LoginPage from '../../client/containers/LoginPage.jsx';
 import LoginForm from '../../client/components/bucketlists/LoginForm.jsx';
-
-configure({ adapter: new Adapter() });
 
 const component = shallow(<LoginPage/>);
 // const mountedComponent = mount(
