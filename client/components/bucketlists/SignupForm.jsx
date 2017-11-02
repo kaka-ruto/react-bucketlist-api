@@ -5,7 +5,7 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
+const SignupForm = ({onSubmit, onChange, errors, user,}) => (
     <Card className = "container">
         <form action = "/signup" onSubmit = { onSubmit }>
             <h2 className = "card-heading">Sign Up</h2>
@@ -54,11 +54,11 @@ const SignUpForm = ({onSubmit, onChange, errors, user,}) => (
     </Card>
 );
 
-SignUpForm.PropTypes = {
+SignupForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired
 };
 
-export default SignUpForm;
+export default SignupForm;

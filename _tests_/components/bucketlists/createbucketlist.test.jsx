@@ -27,7 +27,7 @@ describe('Create bucketlist', () => {
 
     it('should show create bucketlist', () => {
         expect(wrapper).toHaveLength(1);
-        expect(wrapper.text()).toContain('Create bucketlist');
+        expect(wrapper.text()).toContain('<Card />');
 
     });
 
