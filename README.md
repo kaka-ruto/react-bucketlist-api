@@ -1,6 +1,9 @@
 # React-bucketlist-api
 A front-end built using React JS to consume this [flask-bucketlist-api](https://github.com/borenho/flask-bucketlist-api)
 
+[![Build Status](https://travis-ci.org/borenho/react-bucketlist-api.svg)](https://travis-ci.org/borenho/react-bucketlist-api)
+[![Coverage Status](https://coveralls.io/repos/github/borenho/react-bucketlist-api/badge.svg?branch=master)](https://coveralls.io/github/borenho/react-bucketlist-api?branch=master)
+
 ## Requirements
 
 For development, you will only need Node.js installed.
