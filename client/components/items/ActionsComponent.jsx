@@ -2,19 +2,16 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class CreateItemButton extends React.Component{
-    render() {
-        // console.log("VCreate items", this.props.changeItemsMode('create'));
-        return (
-            <div>
-                <a href="/#/dashboard"
-                    onClick = {() => this.props.changeItemsMode('create')} >
-                    <RaisedButton label = "Add Item" secondary={true} fullWidth />
-                </a>
-            </div>
-            
-        );
-    }
+var ActionsComponent = (onClick) =>  {
+    return (
+        <div>
+            <a href="/#/dashboard"
+                onClick = {onClick} >
+                <RaisedButton label = "Add Item" primary fullWidth />
+            </a>
+        </div>
+
+    );
 }
 
-export default CreateItemButton;
+export default ActionsComponent;

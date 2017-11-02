@@ -96,7 +96,7 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
         }
 
         if (!sessionStorage.accessToken) {
-            swal("Login required!", "You are required to login to access this page", "error");  
+            swal("Login required!", "You are required to login to access this page", "error");
             return <Redirect to="/login"/>
         }
 

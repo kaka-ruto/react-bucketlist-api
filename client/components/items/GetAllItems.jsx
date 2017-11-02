@@ -1,7 +1,7 @@
 // Component to view all the created bucketlists
 import React from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
-import CreateItemButton from '../bucketlists/ActionsComponent.jsx';
+import { Card, CardTitle } from 'material-ui/Card';
+import ActionsComponent from '../items/ActionsComponent.jsx';
 import TableItems from './TableItems.jsx';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -58,9 +58,15 @@ class GetAllItems extends React.Component {
         return  (
             <div>
                 <Card className = "sidebar-items border-radius">
-                    <CardHeader title = "Items" />
+                    <CardTitle title = "Items" />
                     <TableItems items={items} changeItemsMode={this.props.changeItemsMode}/>
-                    <CreateItemButton changeItemsMode = {this.props.changeItemsMode} /> 
+                    <ActionsComponent onClick={this.props.changeItemsMode('create')} changeItemsMode = {this.props.changeItemsMode} />
+                    {/* <div>
+                        <a href="/#/dashboard"
+                            onClick = {() => this.props.changeItemsMode('create')} >
+                            <RaisedButton label = "Add Item" primary fullWidth />
+                        </a>
+                    </div> */}
                 </Card>
             </div>
         );

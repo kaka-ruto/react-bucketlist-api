@@ -23,7 +23,7 @@ describe('HomePage', () => {
     });
 
     describe('Homepage item name', () => {
-        it('should display the header', () => {
+        it('should display the homepage', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
                     <Router>

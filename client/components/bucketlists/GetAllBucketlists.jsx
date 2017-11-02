@@ -1,6 +1,6 @@
 // Component to view all the created bucketlists
 import React from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
+import { Card, CardTitle } from 'material-ui/Card';
 import ActionsComponent from './ActionsComponent.jsx';
 import TableBucketlists from './TableBucketlists.jsx';
 import Divider from 'material-ui/Divider';
@@ -58,7 +58,7 @@ class GetAllBucketlists extends React.Component {
         return  (
             <div>
                 <Card className = "sidebar border-radius">
-                    <CardHeader title = "Bucketlists" />
+                    <CardTitle title = "Bucketlists" />
                     <TableBucketlists bucketlists={allBucketlists} changeAppMode={this.props.changeAppMode}/> 
                     <ActionsComponent changeAppMode = {this.props.changeAppMode} /> 
                 </Card>
