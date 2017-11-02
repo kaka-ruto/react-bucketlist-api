@@ -36,6 +36,6 @@ describe('Edit Bucketlist', () => {
             </MuiThemeProvider>
         );
         expect(wrapper).toHaveLength(1);
-        expect(wrapper.text()).toContain('View Bucketlist');
+        expect(wrapper.text()).toContain('Back');
     });
 });

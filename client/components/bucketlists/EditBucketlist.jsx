@@ -114,10 +114,10 @@ class EditBucketlist extends React.Component {
                 <Card className = "sidebar border-radius">
                 <a href="/#/dashboard"
                     onClick = {() => this.props.changeAppMode('readAll')} >
-                    <RaisedButton label = "View Bucketlist" secondary={true} />
+                    <RaisedButton label = "Back" primary />
                 </a>
                     <form action = "/" onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
-                        <h2 className = "card-heading">Buck</h2>
+                        <h2 className = "card-heading">Bucketlist</h2>
 
                         <div className = "field-line">
                             <TextField

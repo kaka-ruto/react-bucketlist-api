@@ -1,7 +1,7 @@
 // Component contains the logic and HTML of our app’s “Add Bucketlist feature
 import React from 'react';
 import GetAllBucketlists from '../bucketlists/GetAllBucketlists.jsx'
-import { Card, CardText } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
@@ -76,6 +76,10 @@ class CreateItem extends React.Component {
             return (
                 <div>
                     <Card className="sidebar-items  border-radius">
+                        <a href="/#/dashboard"
+                            onClick = {() => this.props.changeItemsMode('readAll')} >
+                            <RaisedButton label = "Back" primary />
+                        </a>
                         <div>
                             <form onSubmit = { this.onSave }>
                                 <h2 className = "card-heading">Create item</h2>

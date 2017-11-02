@@ -36,6 +36,6 @@ describe('Edit Item', () => {
             </MuiThemeProvider>
         );
         expect(wrapper).toHaveLength(1);
-        expect(wrapper.text()).toContain('View Item');
+        expect(wrapper.text()).toContain('Back');
     });
 });
