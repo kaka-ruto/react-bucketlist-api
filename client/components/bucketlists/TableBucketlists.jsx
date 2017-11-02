@@ -21,8 +21,9 @@ class TableBucketlists extends React.Component{
         }.bind(this));
 
         return (
-            !rows.length ? <div>You have no bucketists yet</div> 
-                        : <Table selectable={this.state.selectable}>
+            !rows.length ? <div className="no-items">You have no bucketists yet</div> 
+                        : <div>
+                            <Table selectable={this.state.selectable}>
                                 <TableHeader adjustForCheckbox={this.state.showCheckboxes} displaySelectAll={this.state.showCheckboxes}>
                                     <TableRow>
                                         <TableHeaderColumn>ID</TableHeaderColumn>
@@ -35,6 +36,7 @@ class TableBucketlists extends React.Component{
                                     {rows}
                                 </TableBody>
                             </Table>
+                          </div>
         );
     }
 }

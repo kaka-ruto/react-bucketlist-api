@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import SignUpForm from '../components/bucketlists/SignUpForm.jsx';
+import SignupForm from '../components/bucketlists/SignupForm.jsx';
 import { Redirect } from 'react-router';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -84,7 +84,7 @@ class SignUpPage extends React.Component {
             <div>
                 <Base />
                 <div>
-                    <SignUpForm
+                    <SignupForm
                         onSubmit = { this.processForm }
                         onChange = { this.changeUser }
                         errors = { this.state.errors }

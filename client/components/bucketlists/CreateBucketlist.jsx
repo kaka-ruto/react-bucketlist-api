@@ -1,7 +1,7 @@
 // Component contains the logic and HTML of our app’s “Add Bucketlist feature
 import React from 'react';
 import GetAllBucketlists from './GetAllBucketlists.jsx'
-import { Card, CardText } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
@@ -15,7 +15,7 @@ class CreateBucketlist extends React.Component {
                 title: ''
             }
         };
-        
+
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
@@ -43,7 +43,7 @@ class CreateBucketlist extends React.Component {
             data: bucketlist,
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}}).then((response) => {
                 swal("Success!", response.data.message, "success");
-                
+
         }).then(response=>{
             this.props.changeAppMode('readAll');
         })
@@ -74,26 +74,32 @@ class CreateBucketlist extends React.Component {
     render () {
         return (
             <div>
-                <div>
-                    <form onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
-                        <h2 className = "card-heading">Create bucketlist</h2>
+                <Card className="sidebar  border-radius">
+                    <a href="/#/dashboard"
+                        onClick = {() => this.props.changeAppMode('readAll')} >
+                        <RaisedButton label = "Back" primary />
+                    </a>
+                    <div>
+                        <form onSubmit = { this.onSave }>     {/* onSave state comes from AddBucketlist comp */}
+                            <h2 className = "card-heading">Create bucketlist</h2>
 
-                        <div className = "field-line">
-                            <TextField
-                            type = "text"
-                            floatingLabelText = "Title"
-                            autoFocus = 'true'
-                            name = "title"
-                            onChange = { this.onChange }
-                            value = { this.state.title }
-                            />
-                        </div>
+                            <div className = "field-line">
+                                <TextField
+                                type = "text"
+                                floatingLabelText = "Title"
+                                autoFocus = 'true'
+                                name = "title"
+                                onChange = { this.onChange }
+                                value = { this.state.title }
+                                />
+                            </div>
 
-                        <div className = "button-line">
-                            <RaisedButton type = "submit" onClick={this.onSave} label = "Save Bucketlist" primary />
-                        </div>
-                    </form>
-                </div>
+                            <div className = "button-line">
+                                <RaisedButton type = "submit" onClick={this.onSave} label = "Save Bucketlist" primary />
+                            </div>
+                        </form>
+                    </div>
+                </Card>
             </div>
         );
     }

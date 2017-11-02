@@ -36,7 +36,7 @@ class UpdateItem extends React.Component {
                 this.setState({
                     id: response.data.id,
                     title: response.data.title
-            }); 
+            });
 
         }).catch(function (error) {
             if (error.response) {
@@ -117,7 +117,7 @@ class UpdateItem extends React.Component {
                 <Card className = "sidebar-items border-radius">
                 <a href="/#/dashboard"
                     onClick = {() => this.props.changeItemsMode('readAll')} >
-                    <RaisedButton label = "View Items" secondary={true} />
+                    <RaisedButton label = "Back" primary />
                 </a>
                     <form onSubmit = { this.onSave }>
                         <h2 className = "card-heading">Item</h2>

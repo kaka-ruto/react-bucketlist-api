@@ -7,9 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 
 describe('Navbar', () => {
@@ -26,7 +23,7 @@ describe('Navbar', () => {
     });
 
     describe('Text', () => {
-        it('should show up', () => {
+        it('should display home', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
                     <Router>
@@ -37,5 +34,17 @@ describe('Navbar', () => {
             expect(wrapper).toHaveLength(1);
             expect(wrapper.text()).toContain('Home');
         });
+
+        it('shows login and signup if user is not logged in', () => {
+            const wrapper = render(
+                <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                    <Router>
+                        <Base/>
+                    </Router>
+                </MuiThemeProvider>
+            );
+
+            expect(wrapper.text()).toContain('LoginSign up');
+        })
     });
 });

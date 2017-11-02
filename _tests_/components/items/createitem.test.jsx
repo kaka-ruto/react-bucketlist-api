@@ -7,9 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 const wrapper = shallow(<CreateItem/>);
 describe('Create item', () => {
@@ -31,7 +28,7 @@ describe('Create item', () => {
                 <CreateItem/>
             </MuiThemeProvider>
         );
-        it('should show up', () => {
+        it('should show "create item"', () => {
             expect(component).toHaveLength(1);
             expect(component.text()).toContain('Create item');
             
