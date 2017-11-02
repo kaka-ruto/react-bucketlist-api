@@ -7,9 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 global.sessionStorage = {
     setItem: () => {},
@@ -30,17 +27,15 @@ describe('Get Bucketlist', () => {
                     div);
     });
 
-    describe('Text', () => {
-        it('should show up', () => {
-            const wrapper = render(
-                <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <Router>
-                        <GetOneBucketlist bucketlist={{ id: 1}}/>
-                    </Router>
-                </MuiThemeProvider>
-            );
-            expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('View Bucketlist');
-        });
+    it('should show view bucketlist', () => {
+        const wrapper = render(
+            <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                <Router>
+                    <GetOneBucketlist bucketlist={{ id: 1}}/>
+                </Router>
+            </MuiThemeProvider>
+        );
+        expect(wrapper).toHaveLength(1);
+        expect(wrapper.text()).toContain('Back');
     });
 });

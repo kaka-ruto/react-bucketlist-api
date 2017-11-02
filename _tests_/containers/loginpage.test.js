@@ -6,27 +6,13 @@ import { MemoryRouter, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import LoginPage from '../../client/containers/LoginPage.jsx';
 import LoginForm from '../../client/components/bucketlists/LoginForm.jsx';
 
-configure({ adapter: new Adapter() });
-
 const component = shallow(<LoginPage/>);
-// const mountedComponent = mount(
-//     <MuiThemeProvider>
-//         <MemoryRouter>
-//             <LoginPage/>
-//         </MemoryRouter>
-//     </MuiThemeProvider>
-// );
-// const errors = {summary: 'muchene'}
-
-// const loginpage = mount(<LoginPage/>);
 
 global.sessionStorage = {
     setItem: () => {},
@@ -74,20 +60,9 @@ describe('LoginPage', () => {
         expect(component.instance()).toBeInstanceOf(LoginPage);
     });
 
-    // it('renders class login as the parent', () => {
-    //     expect(component.hasClass("login")).toEqual(true);
-    // });
-    
     it('has two children', () => {
         expect(component.children()).toHaveLength(2);
-        // console.log(component.children().get(0).props.children);
-        // expect(component.children().get(1).props).hasClass('loginform');
     });
-
-    it('has props', () => {
-        // console.log(component.props())
-    })
-
 });
 
 describe('LoginForm', () => {
@@ -96,14 +71,4 @@ describe('LoginForm', () => {
         expect(component.find(LoginForm).props());
 
     });
-
-    // it('simulates click events', () => {
-    //     const wrapper = shallow(<LoginForm onSubmit={onSubmit} />);
-    //     wrapper.find(RaisedButton).simulate('click');
-    // })
-
-    // it('has 2 input fields', () => {
-    //     expect(component.find(LoginForm)).find('input').toHaveLength(2);
-    // })
-    
 });

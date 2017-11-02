@@ -7,9 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 const wrapper = shallow(<LoginForm errors onSubmit user/>);
 
@@ -26,14 +23,11 @@ describe('Login Form', () => {
                     div);
     });
 
-
-    describe('Text', () => {
-        it('should display the header', () => {
-            expect(wrapper).toHaveLength(1);
-            // expect(wrapper.text()).toContain('Login');
-            expect(wrapper.props).toBeDefined
-            expect(wrapper.children()).toHaveLength(1)
-        });
+    it('should display the header', () => {
+        expect(wrapper).toHaveLength(1);
+        // expect(wrapper.text()).toContain('Login');
+        expect(wrapper.props).toBeDefined
+        expect(wrapper.children()).toHaveLength(1)
     });
 
 });

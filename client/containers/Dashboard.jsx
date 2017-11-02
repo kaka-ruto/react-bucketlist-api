@@ -5,7 +5,7 @@ import {List, ListItem} from 'material-ui/List';
 import { Card, CardHeader } from 'material-ui/Card';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import RaisedButton from 'material-ui/RaisedButton';   
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Base from '../components/bucketlists/Base.jsx';
 
 // Bucketlist components
@@ -17,8 +17,6 @@ import DeleteBucketlist from '../components/bucketlists/DeleteBucketlist.jsx';
 // Items components
 import GetAllItems from '../components/items/GetAllItems.jsx';
 import CreateItem from '../components/items/CreateItem.jsx';
-// search bucketlists
-import SearchBucketlists from '../components/bucketlists/SearchBucketlists.jsx';
 
 // component that decides which main component to load: read or create/update
 
@@ -31,6 +29,7 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
             currentMode: 'readAll',
             currentItem: 'readAllItems',    // All items for the selected bucket
             bucketlistID: null,
+            loggedIn: true
         };
 
         this.changeAppMode = this.changeAppMode.bind(this);
@@ -57,15 +56,15 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
             url : "http://localhost:5000/auth/logout",
             method: "POST",
             headers: {'Authorization': ('Bearer ' + sessionStorage.getItem('accessToken'))}
-        
+
         }).then((response) => {
                 // Delete the token from localStorage
                 sessionStorage.removeItem('accessToken');
                 this.setState({
-                    'logoutSuccessful': true
+                    'loggedIn': false
                 });
                 swal("Success!", response.data.message, "success");
-                
+
         }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
@@ -90,17 +89,17 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
 
     // Render the component based on the selected mode
     render() {
-        if (this.state.logoutSuccessful) {
+        if (this.state.loggedIn === false) {
             return <Redirect to="/login"/>
         }
 
         if (!sessionStorage.accessToken) {
-            swal("Login required!", "You are required to login to access this page", "error");  
+            swal("Login required!", "You are required to login to access this page", "error");
             return <Redirect to="/login"/>
         }
 
         var modeComponent;
-        
+
         switch(this.state.currentMode) {
             case 'readAll':
                 modeComponent = <GetAllBucketlists changeAppMode = {this.changeAppMode} />;
@@ -122,10 +121,20 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
                 break;
         }
 
-        console.log('current mode', modeComponent);
         return (
             <div className="dashboard">
-                <Base />
+
+                <div className="container">
+                    <div className = "top-bar">
+                        <div className = "top-bar-left">
+                            <NavLink to = "/"> Home</NavLink>
+                            <Link to="/dashboard">Dashboard</Link>
+                        </div>
+                        <div className = "top-bar-right">
+                            <Link to="/login" onClick={this.logout}>Logout</Link>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="modecomponent container">
                     {modeComponent}

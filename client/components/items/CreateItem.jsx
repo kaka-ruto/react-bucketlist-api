@@ -92,7 +92,7 @@ class CreateItem extends React.Component {
                                 </div>
     
                                 <div className = "button-line">
-                                    <RaisedButton type = "submit" onClick={this.onSave} label = "Save Bucketlist" primary />
+                                    <RaisedButton type = "submit" onClick={this.onSave} label = "Save Item" primary />
                                 </div>
                             </form>
                         </div>

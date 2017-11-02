@@ -7,9 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { shallow } from 'enzyme';
 
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 const wrapper = shallow(<ItemRow item={{ id: 1}}/>);
 describe('Item row', () => {
@@ -26,7 +23,7 @@ describe('Item row', () => {
     });
 
     describe('Text', () => {
-        it('should show up', () => {
+        it('should show the action buttons', () => {
             const wrapper = render(
                 <MuiThemeProvider muiTheme = { getMuiTheme() }>
                     <Router>

@@ -99,11 +99,10 @@ class GetOneBucketlist extends React.Component {
                                             changeItemsMode={this.changeItemsMode}/>
                         break;
                     default:
-                        itemModeComponent = <GetAllItems itemID={this.state.itemID} bucketlistID={this.props.bucketlistID}
+                        itemModeComponent = <GetAllItems bucketlistID={this.props.bucketlistID}
                                             changeItemsMode={this.changeItemsMode}/>
                         break;
                 }
-
         return (
             <div>
                 <div>
@@ -127,7 +126,7 @@ class GetOneBucketlist extends React.Component {
                         </form>
                         <a href="/#/dashboard"
                             onClick = {() => this.props.changeAppMode('readAll')} >
-                            <RaisedButton label = "View Bucketlist" primary fullWidth />
+                            <RaisedButton label = "Back" primary fullWidth />
                         </a>
                     </Card>
                 </div>

@@ -4,12 +4,12 @@ import GetAllBucketlists from '../../../client/components/bucketlists/GetAllBuck
 import { HashRouter as Router, Route } from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { shallow } from 'enzyme';
 
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+import { shallow, mount } from 'enzyme';
 import { render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
-configure({ adapter: new Adapter() });
 
 global.sessionStorage = {
     setItem: () => {},
@@ -29,15 +29,13 @@ describe('GetAllBucketlists', () => {
                     div);
     });
 
-    describe('Text', () => {
-        it('should display the header', () => {
-            const wrapper = render(
-                <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <GetAllBucketlists/>
-                </MuiThemeProvider>
-            );
-            expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('Bucketlists');
-        });
+    it('should display the header', () => {
+        const wrapper = render(
+            <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                <GetAllBucketlists/>
+            </MuiThemeProvider>
+        );
+        expect(wrapper).toHaveLength(1);
+        expect(wrapper.text()).toContain('Bucketlists');
     });
 });
