@@ -16,7 +16,7 @@ class EditBucketlist extends React.Component {
                 title: ''
             }
         };
-        
+
             this.onChange = this.onChange.bind(this);
             this.onSave = this.onSave.bind(this);
     }
@@ -33,7 +33,7 @@ class EditBucketlist extends React.Component {
                 this.setState({
                     id: response.data.id,
                     title: response.data.title
-            }); 
+            });
         })
 
         .catch(function (error) {

@@ -27,17 +27,15 @@ describe('Get Bucketlist', () => {
                     div);
     });
 
-    describe('Text', () => {
-        it('should show view bucketlist', () => {
-            const wrapper = render(
-                <MuiThemeProvider muiTheme = { getMuiTheme() }>
-                    <Router>
-                        <GetOneBucketlist bucketlist={{ id: 1}}/>
-                    </Router>
-                </MuiThemeProvider>
-            );
-            expect(wrapper).toHaveLength(1);
-            expect(wrapper.text()).toContain('View Bucketlist');
-        });
+    it('should show view bucketlist', () => {
+        const wrapper = render(
+            <MuiThemeProvider muiTheme = { getMuiTheme() }>
+                <Router>
+                    <GetOneBucketlist bucketlist={{ id: 1}}/>
+                </Router>
+            </MuiThemeProvider>
+        );
+        expect(wrapper).toHaveLength(1);
+        expect(wrapper.text()).toContain('Back');
     });
 });

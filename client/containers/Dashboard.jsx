@@ -17,8 +17,6 @@ import DeleteBucketlist from '../components/bucketlists/DeleteBucketlist.jsx';
 // Items components
 import GetAllItems from '../components/items/GetAllItems.jsx';
 import CreateItem from '../components/items/CreateItem.jsx';
-// search bucketlists
-import SearchBucketlists from '../components/bucketlists/SearchBucketlists.jsx';
 
 // component that decides which main component to load: read or create/update
 
@@ -125,7 +123,6 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
 
         return (
             <div className="dashboard">
-                {/* <Base loggedIn={this.state.loggedIn} logout={this.logout} /> */}
 
                 <div className="container">
                     <div className = "top-bar">
@@ -134,7 +131,6 @@ export class Dashboard extends React.Component {    // Dashboard holds bucketlis
                             <Link to="/dashboard">Dashboard</Link>
                         </div>
                         <div className = "top-bar-right">
-                            {/* <button onClick={this.logout}>Logout</button> */}
                             <Link to="/login" onClick={this.logout}>Logout</Link>
                         </div>
                     </div>

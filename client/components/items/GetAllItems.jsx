@@ -60,13 +60,12 @@ class GetAllItems extends React.Component {
                 <Card className = "sidebar-items border-radius">
                     <CardTitle title = "Items" />
                     <TableItems items={items} changeItemsMode={this.props.changeItemsMode}/>
-                    <ActionsComponent onClick={this.props.changeItemsMode('create')} changeItemsMode = {this.props.changeItemsMode} />
-                    {/* <div>
+                    <div>
                         <a href="/#/dashboard"
                             onClick = {() => this.props.changeItemsMode('create')} >
                             <RaisedButton label = "Add Item" primary fullWidth />
                         </a>
-                    </div> */}
+                    </div>
                 </Card>
             </div>
         );

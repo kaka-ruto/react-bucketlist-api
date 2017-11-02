@@ -39,7 +39,5 @@ describe('Dashboard', () => {
                     </Router>
                 </MuiThemeProvider>
             );
-            // expect(wrapper).toHaveLength(1);
-            // expect(wrapper.text()).toContain('Add Bucketlist');
         });
 });

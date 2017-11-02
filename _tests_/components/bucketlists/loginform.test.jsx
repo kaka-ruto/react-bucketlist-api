@@ -23,14 +23,11 @@ describe('Login Form', () => {
                     div);
     });
 
-
-    describe('Text', () => {
-        it('should display the header', () => {
-            expect(wrapper).toHaveLength(1);
-            // expect(wrapper.text()).toContain('Login');
-            expect(wrapper.props).toBeDefined
-            expect(wrapper.children()).toHaveLength(1)
-        });
+    it('should display the header', () => {
+        expect(wrapper).toHaveLength(1);
+        // expect(wrapper.text()).toContain('Login');
+        expect(wrapper.props).toBeDefined
+        expect(wrapper.children()).toHaveLength(1)
     });
 
 });
